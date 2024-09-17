@@ -5,7 +5,6 @@ def ShuntingYard(infix):
     temp = ""
 
     for c in infix:
-#        print(c)
 
         if c in operators:
             while True:
@@ -15,7 +14,7 @@ def ShuntingYard(infix):
                 else:
                     temp = ""
 
-                if temp == "*" and c == "|":
+                if c == "*" and temp == "|":
                     postfix += stack.pop()
                 else:
                     break
@@ -28,8 +27,6 @@ def ShuntingYard(infix):
             stack.pop()
         else:
             postfix += c
-
-#        print(postfix)
 
     while len(stack) != 0:
         postfix += stack.pop()
